@@ -1,0 +1,307 @@
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Comic Sans MS", cursive;
+  overflow: hidden;
+}
+
+/* ================= FLOATING HEARTS (BG) ================= */
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -30px;
+  font-size: 22px;
+  opacity: 0.8;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* ================= MAIN CARD ================= */
+.container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 420px;
+  padding: 40px 35px;
+  text-align: center;
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+
+  animation: floatIn 1.4s ease forwards;
+  opacity: 0;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================= HEADING ================= */
+h1 {
+  font-size: 30px;
+  color: #ff4d88;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* Typewriter cursor */
+#typewriter::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ================= IMAGE ================= */
+.cute-img {
+  width: 200px;
+  margin: 25px 0;
+  animation: floatImg 3s ease-in-out infinite;
+}
+
+@keyframes floatImg {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* ================= TEXT ================= */
+#countdown,
+#message {
+  font-size: 18px;
+  color: #ff4d88;
+  margin-top: 10px;
+  animation: sparkle 1.5s infinite alternate;
+}
+
+@keyframes sparkle {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+#message strong {
+  font-size: 20px;
+  animation: pop 0.6s ease infinite alternate;
+}
+
+@keyframes pop {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+/* ================= BUTTONS ================= */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 18px 42px;
+  font-size: 22px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+/* YES BUTTON */
+#yesBtn {
+  background: linear-gradient(135deg, #ff4d88, #ff85a2);
+  color: white;
+  box-shadow: 0 10px 25px rgba(255, 77, 136, 0.5);
+}
+
+#yesBtn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 14px 35px rgba(255, 77, 136, 0.65);
+}
+
+#yesBtn:active {
+  transform: scale(1.05);
+}
+
+/* NO BUTTON */
+#noBtn {
+  background: #f1f1f1;
+  color: #555;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+#noBtn:hover {
+  animation: wiggle 0.4s infinite;
+}
+
+#noBtn:active {
+  transform: scale(0.95);
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ================= CONFETTI ================= */
+.confetti {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 24px;
+  pointer-events: none;
+  animation: explode 1.2s ease-out forwards;
+}
+
+@keyframes explode {
+  from {
+    transform: translate(0,0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(var(--x), var(--y)) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ================= FIREWORKS ================= */
+.firework {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: #ff4d88;
+  border-radius: 50%;
+  animation: firework 1s ease-out forwards;
+}
+
+@keyframes firework {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ================= FINAL SCREEN ================= */
+.final {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ff4d88;
+  text-align: center;
+  font-family: "Comic Sans MS", cursive;
+}
+
+.final h1 {
+  font-size: 38px;
+  animation: popIn 0.8s ease;
+}
+
+.final p {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* Inside Joke */
+.inside-joke {
+  font-size: 22px;
+  margin-top: 15px;
+  font-weight: bold;
+  animation: bounce 1s infinite alternate;
+  text-shadow: 0 0 12px rgba(255, 77, 136, 0.5);
+}
+
+@keyframes bounce {
+  to { transform: scale(1.08); }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ================= PAGE WRAPPER ================= */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ================= TOP TEXT (ABOVE CARD) ================= */
+.top-banner {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.top-banner h1 {
+  margin: 0;
+  font-size: 22px;
+  color: #ff4d88;
+  line-height: 1.3;
+  word-break: break-word;
+}
